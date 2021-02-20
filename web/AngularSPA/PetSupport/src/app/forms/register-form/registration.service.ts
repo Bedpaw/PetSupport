@@ -5,6 +5,7 @@ import {
   IRegistrationForm, IPetsitterServices, IPetsitterPhotosDto
 } from './IRegistration-data';
 
+const PETSITTER_URL = 'http://localhost:5001/api/User';
 @Injectable({
   providedIn: 'root'
 })
@@ -56,7 +57,7 @@ export class RegistrationService {
   }
 
   saveUser(): void {
-    this.http.post('https://ng-component-guide-78d02-default-rtdb.firebaseio.com/posts.json', this.registerData)
+    this.http.post<IRegistrationForm>(PETSITTER_URL, this.registerData)
       .subscribe(responseData => {
         console.log(responseData);
       });
