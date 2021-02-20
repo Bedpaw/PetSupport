@@ -31,10 +31,10 @@ export class AFormComponent implements OnInit {
     housenr: ['1/2 a', [Validators.required, Validators.maxLength(10),
       Validators.pattern('^[a-zA-Z0-9_.+-]+/[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
     country: ['Poland', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
-    coordinates: [{
+    coordinates: [[{
       latitude: 0,
       longitude: 0
-    }]
+    }]]
   });
 
   constructor(private http: HttpClient,

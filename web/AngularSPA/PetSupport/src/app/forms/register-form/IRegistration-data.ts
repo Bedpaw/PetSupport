@@ -4,6 +4,7 @@ export interface IBasicInfo {
     surname: string;
     email: string;
     phone: string;
+    phoneNumber?: string;
     password: string;
     confirmPassword: string;
 }
@@ -13,10 +14,10 @@ export interface IAddress {
     zipCode: string;
     housenr: string;
     country: string;
-    coordinates: [{
+    coordinates: {
       latitude: number;
       longitude: number;
-    }];
+    }[];
 }
 export interface IPersonalInfo {
     birthday: string;
@@ -38,7 +39,8 @@ export interface IPetsitterPhotosDto {
 }
 
 export interface IPetsitterServices {
-  service: number;
+  service: string;
+  serviceType?: number;
   petPreferences: string;
   // DO NOT REMOVE THIS IS FOR FEAUTURE DEVELOPMENT
   //   {

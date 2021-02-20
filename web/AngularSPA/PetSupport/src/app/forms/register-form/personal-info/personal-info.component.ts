@@ -29,10 +29,9 @@ export class PersonalInfoComponent {
 
 
   onSubmit(): void {
-    console.log(this.personalInfo);
-    console.log(this.isFormValid);
     if (this.isFormValid) {
       this.registrationService.setPersonalInfo(this.personalInfo);
+      this.registrationService.saveUser();
     }
   }
 

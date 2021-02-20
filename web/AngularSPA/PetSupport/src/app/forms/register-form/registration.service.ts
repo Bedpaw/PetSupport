@@ -25,21 +25,17 @@ export class RegistrationService {
 
 
   setBasicInfo(basicInfo: IBasicInfo): void {
-    console.log(basicInfo);
     this.registerData.basicInfoDto = basicInfo;
   }
 
   setAddress(address: IAddress): void {
-    console.log(address);
     this.registerData.addressDto = address;
   }
 
   setPersonalInfo(personalInfo: IPersonalInfo): void {
-    console.log(personalInfo);
     this.registerData.personalInfoDto = personalInfo;
   }
   setServices(services: IPetsitterServices): void{
-    console.log(services);
     this.registerData.servicesDto = services;
     // For mock purposes
     this.setPetsitterGallery();
@@ -57,6 +53,11 @@ export class RegistrationService {
   }
 
   saveUser(): void {
+    console.log(this.registerData);
+    delete this.registerData.servicesDto.service;
+    this.registerData.servicesDto.serviceType = 1;
+    delete this.registerData.basicInfoDto.phone;
+    this.registerData.basicInfoDto.phoneNumber = '555666777';
     this.http.post<IRegistrationForm>(PETSITTER_URL, this.registerData)
       .subscribe(responseData => {
         console.log(responseData);

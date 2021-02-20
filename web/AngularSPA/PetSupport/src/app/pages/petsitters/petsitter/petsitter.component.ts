@@ -2,7 +2,9 @@ import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PetsittersService} from '../petsitters.service';
 import {Petsitter} from '../../../common/models/petsitter';
+import { HttpClient } from '@angular/common/http';
 
+const PETSITTER_URL = 'http://localhost:5001/api/User';
 @Component({
   selector: 'app-petsitter',
   templateUrl: './petsitter.component.html',
@@ -13,12 +15,13 @@ export class PetsitterComponent implements OnInit, AfterViewInit {
   public petsitter: Petsitter;
   private blockSlider = false;
 
-  constructor(private route: ActivatedRoute, private petsittersService: PetsittersService, private router: Router) {
+  constructor(private route: ActivatedRoute, private petsittersService: PetsittersService, private router: Router,
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.petsitterId = this.route.snapshot.paramMap.get('id') as string;
-
+    this.showPersonalInfo();
     /*    this.route.params.subscribe(params =>  {
           this.petsitterId = params.id;
         });*/
@@ -49,5 +52,10 @@ export class PetsitterComponent implements OnInit, AfterViewInit {
         this.blockSlider = !this.blockSlider;
       }
     });
+  }
+
+  public showPersonalInfo(): void{
+     this.http.get(`${PETSITTER_URL}`).subscribe(thisData=>
+     console.log(thisData));
   }
 }
