@@ -9,11 +9,14 @@ export interface IBasicInfo {
 }
 export interface IAddress {
     street: string;
-    housenr: string;
     city: string;
-    zipcode: string;
+    zipCode: string;
+    housenr: string;
     country: string;
-    coordinates: [];
+    coordinates: [{
+      latitude: number;
+      longitude: number;
+    }];
 }
 export interface IPersonalInfo {
     birthday: string;
@@ -23,10 +26,15 @@ export interface IPersonalInfo {
     environment: string;
 }
 export interface IRegistrationForm {
-    basicInfo: IBasicInfo;
-    address: IAddress;
-    personalInfo: IPersonalInfo;
-    services: IPetsitterServices;
+    basicInfoDto: IBasicInfo;
+    addressDto: IAddress;
+    personalInfoDto: IPersonalInfo;
+    servicesDto: IPetsitterServices;
+    petSitterPhotosDto: IPetsitterPhotosDto;
+}
+export interface IPetsitterPhotosDto {
+    photoId: string;
+    photoGallery: string[];
 }
 
 export interface IPetsitterServices {

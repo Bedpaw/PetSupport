@@ -18,11 +18,11 @@ export class PiFormComponent implements OnInit {
   formValid = new EventEmitter<boolean>();
 
   signupForm = this.fb.group({
-    birthday: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-    title: ['', [Validators.required, Validators.maxLength(90), Validators.minLength(5)]],
-    experience: ['', [Validators.required, Validators.maxLength(300), Validators.minLength(4)]],
-    availability: ['', [Validators.required, Validators.maxLength(180), Validators.minLength(8)]],
-    environment: ['', [Validators.required, Validators.maxLength(180), Validators.minLength(8)]]
+    birthday: ['12.01.1998', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+    title: ['Senior Petsitter', [Validators.required, Validators.maxLength(90), Validators.minLength(5)]],
+    experience: ['2 years pet sitting', [Validators.required, Validators.maxLength(300), Validators.minLength(4)]],
+    availability: ['From monday till friday 4pm - 8pm', [Validators.required, Validators.maxLength(180), Validators.minLength(8)]],
+    environment: ['Mainly outside, long walking close to the forests.', [Validators.required, Validators.maxLength(180), Validators.minLength(8)]]
 });
 
   constructor( private http: HttpClient,

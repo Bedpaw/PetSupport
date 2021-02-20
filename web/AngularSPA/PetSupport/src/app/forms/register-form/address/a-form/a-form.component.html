@@ -6,16 +6,16 @@
         id="street"
         name="street"
         formControlName="street">
-        <span *ngIf="!signupForm.get('street').valid && signupForm.get('street').touched" 
+        <span *ngIf="!signupForm.get('street').valid && signupForm.get('street').touched"
         class="help-block">Please enter a valid Street</span>
-        
+
         <!--
         <mat-error *ngFor="let validation of validation_messages.street">
             <mat-error class="error-message" *ngIf="signupForm.get('street').hasError(validation.type) && (signupForm.get('street').dirty || signupForm.get('fullname').touched)">{{validation.message}}</mat-error>
           </mat-error>
-        -->  
+        -->
     </mat-form-field>
-    
+
     <br>
     <mat-form-field class="width-100">
         <mat-label>House nr / Flat nr</mat-label>
@@ -24,7 +24,7 @@
         id="housenr"
         name="housenr"
         formControlName="housenr">
-        <span *ngIf="!signupForm.get('housenr').valid && signupForm.get('housenr').touched" 
+        <span *ngIf="!signupForm.get('housenr').valid && signupForm.get('housenr').touched"
         class="help-block">Please enter a valid value</span>
     </mat-form-field>
     <br>
@@ -36,19 +36,19 @@
         id="city"
         name="city"
         formControlName="city">
-        <span *ngIf="!signupForm.get('city').valid && signupForm.get('city').touched" 
+        <span *ngIf="!signupForm.get('city').valid && signupForm.get('city').touched"
         class="help-block">Please enter a valid value</span>
     </mat-form-field>
 
     <br>
     <mat-form-field class="width-100">
         <mat-label>Zip Code</mat-label>
-        <input matInput 
+        <input matInput
         placeholder="Ex. 12-345"
-        id="zipcode"
-        name="zipcode"
-        formControlName="zipcode">
-        <span *ngIf="!signupForm.get('zipcode').valid && signupForm.get('zipcode').touched" 
+        id="zipCode"
+        name="zipCode"
+        formControlName="zipCode">
+        <span *ngIf="!signupForm.get('zipCode').valid && signupForm.get('zipCode').touched"
         class="help-block">Please enter a valid value</span>
     </mat-form-field>
     <br>
@@ -60,7 +60,7 @@
         id="country"
         name="country"
         formControlName="country">
-        <span *ngIf="!signupForm.get('country').valid && signupForm.get('country').touched" 
+        <span *ngIf="!signupForm.get('country').valid && signupForm.get('country').touched"
         class="help-block">Please enter a valid value</span>
     </mat-form-field>
     </form>

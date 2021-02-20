@@ -25,13 +25,16 @@ export class AFormComponent implements OnInit {
 
   signupForm = this.fb.group({
 
-    street: ['waww', [Validators.required, Validators.maxLength(25), Validators.minLength(3)]],
+    street: ['Mickiewicza', [Validators.required, Validators.maxLength(25), Validators.minLength(3)]],
+    city: ['Warsaw', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
+    zipCode: ['02-345', Validators.required, this.forbiddenZipCode],
     housenr: ['1/2 a', [Validators.required, Validators.maxLength(10),
       Validators.pattern('^[a-zA-Z0-9_.+-]+/[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-    city: ['asasasaa', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
-    zipcode: ['12345', Validators.required, this.forbiddenZipCode],
     country: ['Poland', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
-    coordinates: []
+    coordinates: [{
+      latitude: 0,
+      longitude: 0
+    }]
   });
 
   constructor(private http: HttpClient,
@@ -44,7 +47,7 @@ export class AFormComponent implements OnInit {
       this.onFormChanged.emit(value);
     });
     this.signupForm.statusChanges.subscribe(status => this.formValid.emit(status === 'VALID'));
-    this.getUserCurrentPostion();
+    this.getUserCurrentPosition();
   }
 
   forbiddenZipCode(control: FormControl): Promise<any> | Observable<any> {
@@ -63,7 +66,7 @@ export class AFormComponent implements OnInit {
     });
     return promise;
   }
-  getUserCurrentPostion(): void {
+  getUserCurrentPosition(): void {
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
@@ -72,7 +75,7 @@ export class AFormComponent implements OnInit {
   }
 
   convertAddressToQuery(): string {
-    const zip = this.signupForm.get('zipcode').value;
+    const zip = this.signupForm.get('zipCode').value;
     const street = this.signupForm.get('street').value;
     const housenr = this.signupForm.get('housenr').value;
     const city = this.signupForm.get('city').value;

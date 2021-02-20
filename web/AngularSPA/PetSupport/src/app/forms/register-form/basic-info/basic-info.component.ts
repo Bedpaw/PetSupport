@@ -23,6 +23,7 @@ export class BasicInfoComponent {
     this.isFormValid = status;
   }
   onSubmit(): void {
+    delete this.basicInfo.confirmPassword;
     console.log(this.basicInfo);
     console.log(this.isFormValid);
     if (this.isFormValid) {
